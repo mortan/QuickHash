@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
@@ -24,7 +25,23 @@ namespace QuickHash
 
         public ObservableCollection<HashItem> HashItems { get; private set; } = new ObservableCollection<HashItem>();
 
-        public ObservableCollection<HashAlgorithmSelection> AvailableHashAlgorithms { get; private set;} = new ObservableCollection<HashAlgorithmSelection>
+        private string title;
+
+        public string Title
+        {
+            get
+            {
+                return title;
+            }
+
+            private set
+            {
+                title = value;
+                OnPropertyChanged();
+            }
+        }
+
+            public ObservableCollection<HashAlgorithmSelection> AvailableHashAlgorithms { get; private set;} = new ObservableCollection<HashAlgorithmSelection>
         {
             new HashAlgorithmSelection { Name = "MD5", ConstructorFunc = () => MD5.Create() },
             new HashAlgorithmSelection { Name = "SHA1", ConstructorFunc = () => SHA1.Create() },
@@ -47,6 +64,10 @@ namespace QuickHash
             ClearCommand = new DelegateCommand(ClearHashes, (o) => HashItems.Count > 0);
 
             HashItems.CollectionChanged += (a, b) => ClearCommand.RaiseCanExecuteChanged();
+
+            var assembly = Assembly.GetEntryAssembly();
+            var productVersion = FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion;
+            Title = $"Quick Hash {productVersion}";
         }
 
         private void ClearHashes(object o)
