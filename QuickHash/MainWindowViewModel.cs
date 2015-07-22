@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -8,10 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Input;
 using GongSolutions.Wpf.DragDrop;
 
 namespace QuickHash
@@ -41,7 +37,7 @@ namespace QuickHash
             }
         }
 
-            public ObservableCollection<HashAlgorithmSelection> AvailableHashAlgorithms { get; private set;} = new ObservableCollection<HashAlgorithmSelection>
+        public ObservableCollection<HashAlgorithmSelection> AvailableHashAlgorithms { get; private set; } = new ObservableCollection<HashAlgorithmSelection>
         {
             new HashAlgorithmSelection { Name = "MD5", ConstructorFunc = () => MD5.Create() },
             new HashAlgorithmSelection { Name = "SHA1", ConstructorFunc = () => SHA1.Create() },

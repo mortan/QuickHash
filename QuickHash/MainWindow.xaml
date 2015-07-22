@@ -9,8 +9,6 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         mc:Ignorable="d"
         Title="{Binding Title}" Height="525.704" Width="1164.333">
 
-    <!--DataContext="{Binding RelativeSource={RelativeSource Self}}"-->
-
     <Window.DataContext>
         <local:MainWindowViewModel/>
     </Window.DataContext>
