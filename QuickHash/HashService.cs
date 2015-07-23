@@ -26,8 +26,7 @@ namespace QuickHash
                     var buffer = new byte[BufferSize];
                     var fileInfo = new FileInfo(fileName);
                     long totalRead = 0;
-                    long onePercent = fileInfo.Length / 100;
-                    int newProgress = 0;
+                    double onePercent = fileInfo.Length / 100.0;
                     int oldProgress = 0;
                     while (totalRead < fileInfo.Length)
                     {
@@ -35,7 +34,7 @@ namespace QuickHash
                         algorithm.TransformBlock(buffer, 0, read, buffer, 0);
                         totalRead += read;
 
-                        newProgress = (int)(totalRead / onePercent);
+                        int newProgress = (int)Math.Floor(totalRead / onePercent);
                         if (newProgress != oldProgress)
                         {
                             oldProgress = newProgress;
