@@ -14,7 +14,7 @@ namespace QuickHash
 
         public Task<string> CalculateHash(string fileName, HashAlgorithm algorithm, IProgress<int> progress)
         {
-            return Task.Factory.StartNew(() =>
+            return Task.Run(() =>
             {
                 if (!File.Exists(fileName))
                 {
