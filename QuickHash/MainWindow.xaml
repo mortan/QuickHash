@@ -7,7 +7,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:local="clr-namespace:QuickHash"
         xmlns:dragDrop="clr-namespace:GongSolutions.Wpf.DragDrop;assembly=GongSolutions.Wpf.DragDrop"
         mc:Ignorable="d"
-        Title="{Binding Title}" Height="525.704" Width="1164.333">
+        Title="{Binding Title}" Height="500" Width="1000">
 
     <Window.DataContext>
         <local:MainWindowViewModel/>
@@ -29,7 +29,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <DataGrid.Columns>
                 <DataGridTextColumn Header="File" Width="*" Binding="{Binding File}" IsReadOnly="true" />
                 <DataGridTextColumn Header="Hash" Width="430" Binding="{Binding Hash}" IsReadOnly="true" />
-                <DataGridTemplateColumn Header="Progress" Width="60" Visibility="Visible">
+                <DataGridTemplateColumn Header="Progress" Width="60">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <ProgressBar Value="{Binding ProgressValue}" Minimum="0" Maximum="100"/>
